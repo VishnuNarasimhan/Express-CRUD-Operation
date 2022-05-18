@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+      .details {
+        color: yellow;
+      }
+      #true {
+        color: green;
+      }
+      #false {
+        color: red;
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Assignment 4</h1>
+    <% for(let user of users) {%>
+    <div id="app-content">
+      <div class="details" id="<%= user.isPromoted %>">
+        <table>
+          <td>
+            <h2 class="h2"><%=user.name%></h2>
+            <h3 class="h3"><%=user.email%></h3>
+            <div class="form">
+              <form action="/users/<%= user._id %>?_method=PUT" method="post">
+                <button class="promote_btn">Promoted/Demoted</button>
+              </form>
+              <form
+                action="/users/<%= user._id %>?_method=DELETE"
+                method="post"
+              >
+                <button class="delete_btn">Delete</button>
+              </form>
+            </div>
+          </td>
+        </table>
+        <% }%>
+      </div>
+    </div>
+    <div class="add-user">
+      <a href="/form">Add User</a>
+    </div>
+  </body>
+</html>
